@@ -1,4 +1,4 @@
-# ![Logo](https://raw.githubusercontent.com/your_username/your_repository/main/app/assets/images/RoundTable.png) RoundTable
+# <img src="https://github.com/berlincoders/RoundTable/raw/main/app/assets/images/RoundTable.png" alt="Logo" width="50"> RoundTable
 
 
 Rails Templates Minimal+ Devise   
