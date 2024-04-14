@@ -1,4 +1,4 @@
-# RoundTable (The coding game)
+# RoundTable 
 
 Rails Templates Minimal+ Devise   
 Quickly generate a rails app with the default [Wagon](https://www.lewagon.com/) configuration
