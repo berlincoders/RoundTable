@@ -3,7 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
+import "../javascript/script";
 
-// Adding script.js
-import { selectWeapon } from "script";
-selectWeapon();  
