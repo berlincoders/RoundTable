@@ -15,3 +15,18 @@
 // Device CSS
 // Import device
 @import "pages/device";
+
+.container {
+  text-align: center;
+}
+
+.legend {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; /* Black text color */
+}
+.image-container {
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the image horizontally */
+  display: block; /* Ensure it's a block-level element */
+}

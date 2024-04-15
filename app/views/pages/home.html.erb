@@ -1,34 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
 
 <!-- app/views/pages/home.html.erb -->
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Pages#home</title>
-  <style>
-    /* Define styles for the page */
-    body {
-      background-color: #f2f2f2; /* Grey background color */
-      padding: 20px; /* Add some padding */
-    }
-
-    h1 {
-      color: #333; /* Black text color */
-    }
-
-    img {
-      max-width: 100%; /* Ensure the image does not exceed the container width */
-      display: block; /* Make the image a block element to center it */
-      margin: 0 auto; /* Center the image horizontally */
-      margin-top: 20px; /* Add some space above the image */
-    }
-  </style>
 </head>
 <body>
-    <!-- Insert your image using the image_tag helper -->
-  <%= image_tag "Percival.jpg", alt: "Your Image" %>
+  <div class="container">
+  <%= image_tag "Percival.png", alt: "Your Image", class: "image-container" %>
+  <p class="legend">Choose your fraction</p>
+  <div class="shield-buttons">
+    <button class="shield"></button>
+    <button class="shield"></button>
+    <button class="shield"></button>
+    <!-- Add more shield buttons as needed -->
+  </div>
 </body>
 </html>
