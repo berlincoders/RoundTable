@@ -8,5 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 # Pin your local script
-
 pin "script", to: "/javascript/script.js", preload: true
