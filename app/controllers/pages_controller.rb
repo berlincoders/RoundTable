@@ -9,4 +9,7 @@ class PagesController < ApplicationController
 
   def python
   end
+
+  def landing
+  end
 end
