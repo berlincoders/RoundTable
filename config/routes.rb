@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get '/js', to: 'pages#js'
   get '/python', to: 'pages#python'
+  get '/roundtable', to: 'pages#roundtable'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

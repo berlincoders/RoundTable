@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Routetable</title>
+  <!-- Include Three.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden; /* Hide scrollbars */
+    }
+    #map-container {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="map-container"></div>
+
+  <%= image_tag "knights.png", id: "background-image", style: "display: none;" %>
+
+  <script>
+    // Load the background texture
+    const backgroundImageUrl = document.getElementById("background-image").src;
+    const loader = new THREE.TextureLoader();
+    loader.load(backgroundImageUrl, function(texture) {
+      // Create a plane geometry matching the aspect ratio of the background image
+      const aspectRatio = texture.image.width / texture.image.height;
+      const width = 20; // Set a fixed width for the background plane
+      const height = width / aspectRatio;
+      const geometry = new THREE.PlaneGeometry(width, height);
+
+      // Create a material with the loaded texture
+      const material = new THREE.MeshBasicMaterial({ map: texture });
+
+      // Create a mesh with the geometry and material for the background plane
+      const backgroundMesh = new THREE.Mesh(geometry, material);
+
+      // Set up the scene, camera, and renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.getElementById('map-container').appendChild(renderer.domElement);
+
+      // Add the background plane to the scene
+      scene.add(backgroundMesh);
+
+      // Create and position the rings
+      createRing(scene, 8.9, 9, 0x00ffff);  // Neon blue
+      createRing(scene, 9.1, 9.2, 0xff00ff); // Neon magenta
+
+      // Position the camera
+      camera.position.z = 20;
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      animate();
+    });
+
+    // Function to create a ring and add it to the scene
+    function createRing(scene, innerRadius, outerRadius, color) {
+      const segments = 64; // Number of segments
+      const geometry = new THREE.RingGeometry(innerRadius, outerRadius, segments);
+      const material = new THREE.MeshBasicMaterial({ color: color, side: THREE.DoubleSide });
+      const ring = new THREE.Mesh(geometry, material);
+      scene.add(ring);
+    }
+  </script>
+</body>
+</html>

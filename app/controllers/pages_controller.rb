@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :js, :python  ]
+  skip_before_action :authenticate_user!, only: [ :home, :js, :python , :roundtable ]
 
   def home
   end
@@ -11,5 +11,8 @@ class PagesController < ApplicationController
   end
 
   def landing
+  end
+
+  def roundtable
   end
 end
