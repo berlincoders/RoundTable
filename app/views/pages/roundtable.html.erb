@@ -50,8 +50,12 @@
       scene.add(backgroundMesh);
 
       // Create and position the rings
-      createRing(scene, 8.9, 9, 0x00ffff);  // Neon blue
-      createRing(scene, 9.1, 9.2, 0xff00ff); // Neon magenta
+      // First 5 Levels rings are Neon blue
+      createRing(scene, 12.9, 13, 0x00ffff);
+      createRing(scene, 11.9, 12, 0x00ffff);
+      createRing(scene, 10.9, 11, 0x00ffff);
+      createRing(scene, 9.9, 10, 0x00ffff);
+      createRing(scene, 8.9, 9, 0x00ffff); // Neon blue
 
       // Position the camera
       camera.position.z = 20;
@@ -71,6 +75,20 @@
       const material = new THREE.MeshBasicMaterial({ color: color, side: THREE.DoubleSide });
       const ring = new THREE.Mesh(geometry, material);
       scene.add(ring);
+
+      // Calculate the positions of the nodes
+      const numNodes = 5;
+      const angleIncrement = (2 * Math.PI) / numNodes;
+      for (let i = 0; i < numNodes; i++) {
+        const angle = i * angleIncrement;
+        const x = Math.cos(angle) * outerRadius;
+        const y = Math.sin(angle) * outerRadius;
+        const sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+        const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        sphere.position.set(x, y, 0); // Set position
+        scene.add(sphere);
+      }
     }
   </script>
 </body>
