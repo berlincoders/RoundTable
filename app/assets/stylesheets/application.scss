@@ -7,10 +7,15 @@
 @import "bootstrap";
 @import "font-awesome";
 
-// Your CSS partials
+// Your CSS partials Component
 @import "components/index";
+
+
+// here the pages
 @import "pages/index";
 @import "pages/home";
+@import "pages/roundtable";
+
 
 // Device CSS
 // Import device

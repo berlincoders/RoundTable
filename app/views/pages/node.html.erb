@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Node</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.node {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  position: absolute;
+
+  &:hover::after {
+    content: attr(data-message);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+}
+</style>
+</head>
+<body>
+  <div id="container">
+    <div class="node" data-message="Hello World!" style="top: 50px; left: 50px;"></div>
+  </div>
+
+  <script>
+    const node = document.querySelector('.node');
+    node.addEventListener('mouseover', () => {
+      node.setAttribute('data-message', 'Hovered!');
+    });
+    node.addEventListener('mouseout', () => {
+      node.setAttribute('data-message', 'Hello World!');
+    });
+  </script>
+</body>
+</html>
