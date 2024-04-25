@@ -23,13 +23,15 @@ body {
   position: absolute;
 
   &:hover::after {
+
     content: attr(data-message);
     position: absolute;
-    top: 100%;
+    top: 120%;/* Adjust top position */
     left: 0;
     background-color: white;
     color: black;
-    padding: 5px;
+    padding: 10px;/* Increase padding */
+    width: 200px; /* Increase width */
     border-radius: 5px;
     white-space: nowrap;
   }
@@ -38,13 +40,13 @@ body {
 </head>
 <body>
   <div id="container">
-    <div class="node" data-message="Hello World!" style="top: 50px; left: 50px;"></div>
+    <div class="node" data-message="Hello World! " style="top: 60px; left: 60px;"></div>
   </div>
 
   <script>
     const node = document.querySelector('.node');
     node.addEventListener('mouseover', () => {
-      node.setAttribute('data-message', 'Hovered!');
+      node.setAttribute('data-message', 'Hovered and more text here!');
     });
     node.addEventListener('mouseout', () => {
       node.setAttribute('data-message', 'Hello World!');

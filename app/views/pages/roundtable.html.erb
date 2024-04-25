@@ -8,9 +8,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-  <div id="map-container"></div>
-
+  <!-- Your background image -->
   <%= image_tag "knights.png", id: "background-image", style: "display: none;" %>
+
+  <div id="map-container"></div>
 
   <script>
     // Load the background texture
@@ -45,7 +46,7 @@
       createRing(scene, 11.9, 12, 0x00ffff);
       createRing(scene, 10.9, 11, 0x00ffff);
       createRing(scene, 9.9, 10, 0x00ffff);
-      createRing(scene, 8.9, 9, 0x00ffff); // Neon blue
+
 
       // Position the camera
       camera.position.z = 20;
@@ -73,7 +74,7 @@
         const angle = i * angleIncrement;
         const x = Math.cos(angle) * outerRadius;
         const y = Math.sin(angle) * outerRadius;
-        const sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32);
+        const sphereGeometry = new THREE.SphereGeometry(0.2, 32, 32);
         const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
         const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
         sphere.position.set(x, y, 0); // Set position
