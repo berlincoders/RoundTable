@@ -6,12 +6,52 @@
   <title>Routetable</title>
   <!-- Include Three.js library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    #map-container {
+      position: relative;
+    }
+
+    .node {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+
+    .node:hover::after {
+      content: attr(data-message);
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      color: black;
+      padding: 5px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    #custom-button {
+      position: absolute;
+      width: px;
+      height: 20px;
+      background-color: white;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <div id="map-container"></div>
+
   <!-- Your background image -->
   <%= image_tag "knights.png", id: "background-image", style: "display: none;" %>
 
-  <div id="map-container"></div>
+  <button id="custom-button" class="node" data-message="Button" style="top: 350px; left: 850px;"></button>
 
   <script>
     // Load the background texture
@@ -46,7 +86,7 @@
       createRing(scene, 11.9, 12, 0x00ffff);
       createRing(scene, 10.9, 11, 0x00ffff);
       createRing(scene, 9.9, 10, 0x00ffff);
-
+    // Neon blue
 
       // Position the camera
       camera.position.z = 20;
@@ -66,58 +106,23 @@
       const material = new THREE.MeshBasicMaterial({ color: color, side: THREE.DoubleSide });
       const ring = new THREE.Mesh(geometry, material);
       scene.add(ring);
-
-      // Calculate the positions of the nodes
-      const numNodes = 5;
-      const angleIncrement = (2 * Math.PI) / numNodes;
-      for (let i = 0; i < numNodes; i++) {
-        const angle = i * angleIncrement;
-        const x = Math.cos(angle) * outerRadius;
-        const y = Math.sin(angle) * outerRadius;
-        const sphereGeometry = new THREE.SphereGeometry(0.2, 32, 32);
-        const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        sphere.position.set(x, y, 0); // Set position
-        sphere.userData.message = `Exercise ${i + 1}`; // Set custom data for each sphere
-        sphere.onmouseover = showPopUpMessage;
-        sphere.onmouseout = hidePopUpMessage;
-        scene.add(sphere);
-      }
     }
 
-    // Function to show pop-up message
+    // Show pop-up message on mouseover
     function showPopUpMessage(event) {
-      const message = event.target.userData.message;
+      const message = event.target.dataset.message;
       console.log(`Showing message: ${message}`);
-      // Create a div for the pop-up message
-      const messageDiv = document.createElement('div');
-      messageDiv.id = 'popup-message';
-      messageDiv.style.position = 'absolute';
-
-      // Position the pop-up message relative to the node
-      const vector = event.target.position.clone().project(camera);
-      const x = (vector.x * window.innerWidth) / 2 + window.innerWidth / 2;
-      const y = -(vector.y * window.innerHeight) / 2 + window.innerHeight / 2;
-      messageDiv.style.top = `${y}px`;
-      messageDiv.style.left = `${x}px`;
-
-      messageDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-      messageDiv.style.color = 'white'; // Set text color to white
-      messageDiv.style.padding = '10px';
-      messageDiv.innerText = message;
-
-      // Add the message to the document body
-      document.body.appendChild(messageDiv);
     }
 
-    // Function to hide pop-up message
+    // Hide pop-up message on mouseout
     function hidePopUpMessage() {
       console.log('Hiding message');
-      const messageDiv = document.getElementById('popup-message');
-      if (messageDiv) {
-        document.body.removeChild(messageDiv);
-      }
     }
+
+    // Event listener for button hover
+    const button = document.getElementById('custom-button');
+    button.addEventListener('mouseover', showPopUpMessage);
+    button.addEventListener('mouseout', hidePopUpMessage);
   </script>
 </body>
 </html>
