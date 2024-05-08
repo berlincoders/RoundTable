@@ -7,13 +7,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %> // this will find the js files
-
-
+    <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-        <%= render "shared/flashes" %>
-        <%= yield %>
+  <body class="bg-custom-background-color"> <!-- Apply the custom background color class to the body -->
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>

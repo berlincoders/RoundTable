@@ -1,5 +1,53 @@
-<nav id="nav" class="fixed top-0 w-full bg-blue-900 text-white py-4"style="position: fixed; top: 0; width: 100%; background-color: #072d4a; z-index: 1000;">
+<nav id="nav" class="fixed top-0 w-full text-white py-4" style="position: fixed; top: 0; width: 100%; background-color:#072d4a; z-index: 1000;">
   <div class="container mx-auto flex justify-center items-center">
-    <div class="font-Hasklig-Headline text-center">BERLIN_CODERS</div>
+    <div id="navText" class="font-Hasklig-Headline text-center font-bold text-4xl">BERLIN_CODERS</div>
   </div>
+
+  <script>
+    // Function to generate random ASCII characters
+    function randomASCIIChar() {
+      // Generate a random ASCII code between 33 and 126 (inclusive)
+      var randomCharCode = Math.floor(Math.random() * (126 - 33 + 1)) + 33;
+      // Convert the ASCII code to its corresponding character
+      return String.fromCharCode(randomCharCode);
+    }
+
+    // Function to replace characters in the text with ASCII characters with a vertical rolling effect
+    function replaceRandomChars(text) {
+      var newText = "";
+      for (var i = 0; i < text.length; i++) {
+        // Randomly decide whether to replace the character with an ASCII character
+        if (Math.random() < 0.25) { // Probability of replacement: 25%
+          var newChar;
+          // Replace "C" with "[" or "{"
+          if (text[i] === "C") {
+            newChar = Math.random() < 0.5 ? "<" : "[";
+          }
+          // Replace "O" with "@" or "0"
+          else if (text[i] === "O") {
+            newChar = Math.random() < 0.5 ? "@" : "0";
+          }
+          // Generate a random ASCII character if not "C" or "O"
+          else {
+            newChar = randomASCIIChar();
+          }
+        } else {
+          // Keep the original character
+          newChar = text[i];
+        }
+
+        newText += newChar;
+      }
+      return newText;
+    }
+
+    // Update the navigation bar text with the modified string
+    var navText = "BERLIN_CODERS";
+    document.getElementById("navText").innerText = navText;
+
+    // Periodically update the navigation bar text
+    setInterval(function() {
+      document.getElementById("navText").innerText = replaceRandomChars(navText);
+    }, 6000); // Update every 6 seconds
+  </script>
 </nav>

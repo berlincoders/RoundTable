@@ -1,3 +1,11 @@
+// Graphical variables
+@import "config/colors";
+// Define your custom background color variable
+$custom-background-color: #072d4a; // Example dark blue color
+// Define the custom background color class
+.bg-custom-background-color {
+  background-color: #072d4a; // Your custom background color
+}
 
 // Your CSS partials Component
 @import "components/index";
