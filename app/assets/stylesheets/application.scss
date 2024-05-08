@@ -1,56 +1,10 @@
-// Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
-
-// External libraries
-@import "bootstrap";
-@import "font-awesome";
 
 // Your CSS partials Component
 @import "components/index";
+@import 'components/nav'; // adding navigation styles
 
 
-// here the pages
-@import "pages/index";
-@import "pages/home";
-@import "pages/roundtable";
 
-
-// Device CSS
-// Import device
-@import "pages/device";
-
-.container {
-  text-align: center;
-}
-
-.image-container {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.legend {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fcfbfb; /* Black text color */
-}
-
-.shield-buttons {
-  margin-top: 20px;
-}
-
-.shield {
-  width: 100px;
-  height: 100px;
-  margin: 0 10px;
-  max-width: none; /* Remove max-width constraint */
-  max-height: none; /* Remove max-height constraint */
-  transition: transform 0.3s, filter 0.3s;
-}
-
-
-.shield:hover {
-  transform: scale(1.2); /* Zoom in effect */
-  filter: brightness(1.5); /* Increase brightness for gold effect */
-}
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
