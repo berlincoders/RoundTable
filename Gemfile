@@ -56,6 +56,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem 'webpacker', '~> 5.0'
 gem 'lorem_ipsum'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
 
 group :development, :test do
   gem "dotenv-rails"
